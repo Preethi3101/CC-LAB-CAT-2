@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sign
+  name: sign-deployment
+  namespace: sign
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sign
+  template:
+    metadata:
+      labels:
+        app: sign
+    spec:
+      containers:
+        - image: "html-server-image:v1"
+          imagePullPolicy: Never  
+          name: sign
+          ports:
+            - containerPort: 80      
